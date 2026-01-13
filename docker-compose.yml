@@ -25,8 +25,18 @@ services:
     networks:
       - elastic
 
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.17.9
+    container_name: logstash_lab
+    volumes:
+      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    environment:
+      - xpack.monitoring.enabled=false
+    depends_on:
+      - elasticsearch
+    networks:
+      - elastic
+
 networks:
   elastic:
     driver: bridge
-
-    
