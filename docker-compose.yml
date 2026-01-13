@@ -30,6 +30,9 @@ services:
     container_name: logstash_lab
     volumes:
       - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logstash/vgsales.csv:/usr/share/logstash/data/vgsales.csv
+      - ./logstash/web_access.log:/usr/share/logstash/data/web_access.log
+      - ./logstash/blacklist.yml:/usr/share/logstash/config/blacklist.yml
     environment:
       - xpack.monitoring.enabled=false
     depends_on:
